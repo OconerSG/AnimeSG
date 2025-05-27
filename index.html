@@ -8,95 +8,114 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #2c3e50;
+      background-color: #1c1c1c;
       color: white;
     }
 
     .main-title {
       text-align: center;
-      font-size: 36px;
-      font-weight: bold;
+      font-size: 32px;
       padding: 20px;
+      font-weight: bold;
+      background-color: #222;
+    }
+
+    .main-title a {
       color: #00ffff;
+      text-decoration: none;
     }
 
     .search-bar {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 20px;
+      text-align: center;
+      margin: 20px;
     }
 
     .search-bar input {
       padding: 10px;
+      font-size: 16px;
       width: 80%;
       max-width: 400px;
-      border-radius: 8px;
+      border-radius: 5px;
       border: none;
-      font-size: 16px;
     }
 
-    .anime-list {
+    .anime-grid {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      padding: 20px;
+      padding: 10px;
+      gap: 20px;
     }
 
     .anime-card {
-      background-color: #34495e;
+      background-color: #2c3e50;
       border-radius: 10px;
-      margin: 10px;
-      width: 220px;
-      cursor: pointer;
       overflow: hidden;
+      width: 250px;
+      cursor: pointer;
+      text-align: center;
       text-decoration: none;
       color: white;
-      transition: border 0.3s, box-shadow 0.3s;
-      border: 2px solid #34495e;
+      transition: transform 0.3s;
     }
 
     .anime-card:hover {
-      border-color: #00ffff;
-      box-shadow: 0 0 15px #00ffff;
+      transform: scale(1.05);
     }
 
     .anime-card img {
       width: 100%;
       height: auto;
-      display: block;
     }
 
-    .anime-card .title {
-      padding: 10px;
-      font-size: 18px;
-      font-weight: bold;
-      text-align: center;
+    .anime-card h2 {
+      margin: 10px 0;
+      font-size: 20px;
+    }
+
+    .anime-card p {
+      padding: 0 10px 10px;
+      font-size: 14px;
+      color: #ccc;
+    }
+
+    @media screen and (max-width: 600px) {
+      .anime-card {
+        width: 90%;
+      }
     }
   </style>
 </head>
 <body>
 
-  <div class="main-title">Anime SG</div>
-
-  <div class="search-bar">
-    <input type="text" id="searchInput" onkeyup="filterAnimes()" placeholder="Buscar anime...">
+  <div class="main-title">
+    <a href="index.html">Anime SG</a>
   </div>
 
-  <div class="anime-list" id="animeList">
-    <a href="vigilante.html" class="anime-card">
-      <img src="https://i.imgur.com/WikYH8L.jpeg" alt="Vigilante">
-      <div class="title">Vigilante: Boku no Hero Academia Illegals</div>
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Buscar anime..." onkeyup="filterAnimes()" />
+  </div>
+
+  <div class="anime-grid" id="animeGrid">
+
+    <a href="vigilante-boku-no-hero-academia-illegals.html" class="anime-card">
+      <img src="https://i.imgur.com/WikYH8L.jpeg" alt="Vigilante" />
+      <h2>Vigilante: Boku no Hero Academia Illegals</h2>
+      <p>Héroes no oficiales luchan en las sombras para proteger la ciudad de amenazas que los profesionales no pueden manejar.</p>
     </a>
 
     <a href="fire-force-san-no-shou.html" class="anime-card">
-      <img src="https://i.imgur.com/u2o4udW.png" alt="Fire Force">
-      <div class="title">Fire Force: San no Shou</div>
+      <img src="https://i.imgur.com/u2o4udW.png" alt="Fire Force" />
+      <h2>Fire Force: San no Shou</h2>
+      <p>Shinra y la Octava Compañía enfrentan intensas batallas y revelaciones sobre el Adolla Burst y el destino del mundo.</p>
     </a>
 
     <a href="kung-fu-panda-4.html" class="anime-card">
-      <img src="https://i.imgur.com/TcJLeBn.jpeg" alt="Kung Fu Panda 4">
-      <div class="title">Kung Fu Panda 4</div>
+      <img src="https://i.imgur.com/TcJLeBn.jpeg" alt="Kung Fu Panda 4" />
+      <h2>Kung Fu Panda 4</h2>
+      <p>Po debe enfrentar su destino como líder espiritual mientras una nueva amenaza mágica se alza para invocar el caos.</p>
     </a>
+
   </div>
 
   <script>
@@ -105,11 +124,10 @@
       const cards = document.querySelectorAll(".anime-card");
 
       cards.forEach(card => {
-        const title = card.querySelector(".title").innerText.toLowerCase();
+        const title = card.querySelector("h2").innerText.toLowerCase();
         card.style.display = title.includes(input) ? "block" : "none";
       });
     }
   </script>
-
 </body>
 </html>
