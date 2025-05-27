@@ -29,6 +29,7 @@
       align-items: center;
       padding: 20px;
       border-bottom: 1px solid #444;
+      flex-wrap: wrap;
     }
 
     .header img {
@@ -99,61 +100,27 @@
   </div>
 
   <!-- Episodios -->
-  <div class="episode" onclick="togglePlayer(1)">Episodio 1
-    <div class="player" id="player1">
-      <iframe src="https://pixeldrain.com/u/8t21Cd2Z?embed" allowfullscreen></iframe>
-    </div>
-  </div>
+  <div class="episode" onclick="setPlayer('https://pixeldrain.com/u/8t21Cd2Z?embed')">Episodio 1</div>
+  <div class="episode" onclick="setPlayer('https://pixeldrain.com/u/4msTXVqz?embed')">Episodio 2</div>
+  <div class="episode" onclick="setPlayer('https://pixeldrain.com/u/TV48sFhD?embed')">Episodio 3</div>
+  <div class="episode" onclick="setPlayer('https://pixeldrain.com/u/SLfdrAmk?embed')">Episodio 4</div>
+  <div class="episode" onclick="setPlayer('https://pixeldrain.com/u/SBKvu7y2?embed')">Episodio 5</div>
+  <div class="episode" onclick="setPlayer('https://pixeldrain.com/u/LpTn5BPq?embed')">Episodio 6</div>
+  <div class="episode" onclick="setPlayer('https://pixeldrain.com/u/kwresGwt?embed')">Episodio 7</div>
+  <div class="episode" onclick="setPlayer('https://pixeldrain.com/u/n8f66ZAC?embed')">Episodio 8</div>
 
-  <div class="episode" onclick="togglePlayer(2)">Episodio 2
-    <div class="player" id="player2">
-      <iframe src="https://pixeldrain.com/u/4msTXVqz?embed" allowfullscreen></iframe>
-    </div>
-  </div>
-
-  <div class="episode" onclick="togglePlayer(3)">Episodio 3
-    <div class="player" id="player3">
-      <iframe src="https://pixeldrain.com/u/TV48sFhD?embed" allowfullscreen></iframe>
-    </div>
-  </div>
-
-  <div class="episode" onclick="togglePlayer(4)">Episodio 4
-    <div class="player" id="player4">
-      <iframe src="https://pixeldrain.com/u/SLfdrAmk?embed" allowfullscreen></iframe>
-    </div>
-  </div>
-
-  <div class="episode" onclick="togglePlayer(5)">Episodio 5
-    <div class="player" id="player5">
-      <iframe src="https://pixeldrain.com/u/SBKvu7y2?embed" allowfullscreen></iframe>
-    </div>
-  </div>
-
-  <div class="episode" onclick="togglePlayer(6)">Episodio 6
-    <div class="player" id="player6">
-      <iframe src="https://pixeldrain.com/u/LpTn5BPq?embed" allowfullscreen></iframe>
-    </div>
-  </div>
-
-  <div class="episode" onclick="togglePlayer(7)">Episodio 7
-    <div class="player" id="player7">
-      <iframe src="https://pixeldrain.com/u/kwresGwt?embed" allowfullscreen></iframe>
-    </div>
-  </div>
-
-  <div class="episode" onclick="togglePlayer(8)">Episodio 8
-    <div class="player" id="player8">
-      <iframe src="https://pixeldrain.com/u/n8f66ZAC?embed" allowfullscreen></iframe>
-    </div>
+  <!-- Reproductor personalizado -->
+  <div class="player" id="player-container">
+    <iframe id="video-player" src="" allowfullscreen></iframe>
   </div>
 
   <script>
-    function togglePlayer(num) {
-      const player = document.getElementById("player" + num);
-      player.style.display =
-        player.style.display === "none" || player.style.display === ""
-          ? "block"
-          : "none";
+    function setPlayer(url) {
+      const player = document.getElementById("video-player");
+      const container = document.getElementById("player-container");
+      player.src = url;
+      container.style.display = "block";
+      window.scrollTo({ top: container.offsetTop - 20, behavior: 'smooth' });
     }
   </script>
 </body>
